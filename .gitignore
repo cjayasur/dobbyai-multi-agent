@@ -1,0 +1,33 @@
+# Secrets — never commit
+.env
+.env.local
+.env.production
+*.pem
+*.key
+
+# Runtime state
+tasks.db
+tasks.db-journal
+tasks.db-wal
+tasks.db-shm
+
+# Dependencies
+node_modules/
+bun.lockb
+.bun/
+
+# Build artifacts
+dist/
+build/
+*.log
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local test artifacts
+/tmp/
+demo-output/

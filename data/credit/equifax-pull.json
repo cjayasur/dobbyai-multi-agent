@@ -1,0 +1,91 @@
+{
+  "_meta": {
+    "bureau": "Equifax",
+    "loan_id": "LN-2026-1234",
+    "pull_date": "2026-05-15T14:22:11-07:00",
+    "pull_type": "Hard inquiry — mortgage",
+    "scoring_model": "FICO Score 5 (mortgage variant — Equifax-specific)",
+    "pulled_by": "DobbyBank, N.A. — NMLS #1234567",
+    "purpose": "Second of three bureau pulls. Note slight FICO variance (738 vs 740 vs 745) is normal — each bureau holds slightly different tradelines depending on which creditors report to which bureau."
+  },
+
+  "borrower": {
+    "name": "Maria Lucia Rodriguez",
+    "ssn_last4": "1234",
+    "dob": "1985-07-22",
+    "current_address": "2150 Stanton Ave Apt 12, Castro Valley CA 94546"
+  },
+
+  "fico_score": 738,
+  "fico_range": "Very Good (740-799 — at boundary)",
+
+  "score_factors": [
+    "Length of credit history: 14 years (positive)",
+    "Credit utilization: 11% (positive)",
+    "Number of accounts with balances: 4 (neutral)",
+    "Recent inquiries: 3 in last 12 months (slight negative — additional inquiry that Experian missed)"
+  ],
+
+  "tradelines": [
+    {
+      "creditor": "Toyota Financial Services",
+      "type": "Auto loan (installment)",
+      "opened": "2022-09-15",
+      "high_credit": 38000,
+      "balance": 28000,
+      "monthly_payment": 712,
+      "status": "Current"
+    },
+    {
+      "creditor": "Navient",
+      "type": "Student loan (installment)",
+      "opened": "2007-09-01",
+      "high_credit": 52000,
+      "balance": 18500,
+      "monthly_payment": 385,
+      "status": "Current"
+    },
+    {
+      "creditor": "Chase Sapphire Visa",
+      "type": "Revolving",
+      "credit_limit": 22000,
+      "balance": 2300,
+      "status": "Current"
+    },
+    {
+      "creditor": "American Express Gold",
+      "type": "Charge card",
+      "balance": 1850,
+      "status": "Current"
+    },
+    {
+      "creditor": "Discover It",
+      "type": "Revolving",
+      "credit_limit": 15000,
+      "balance": 0,
+      "status": "Current"
+    },
+    {
+      "creditor": "Capital One Quicksilver",
+      "type": "Revolving (closed)",
+      "opened": "2010-04-18",
+      "closed": "2023-08-30",
+      "high_credit": 5000,
+      "balance": 0,
+      "status": "Closed — paid in full",
+      "notes": "Reported to Equifax but not Experian — accounts for the small score variance"
+    }
+  ],
+
+  "public_records": [],
+  "collections": [],
+  "bankruptcies": [],
+
+  "recent_inquiries": [
+    {"creditor": "DobbyBank, N.A.", "date": "2026-05-15", "type": "Mortgage"},
+    {"creditor": "Apple Card", "date": "2025-11-08", "type": "Revolving"},
+    {"creditor": "Wells Fargo (rate shop)", "date": "2026-05-10", "type": "Mortgage"}
+  ],
+
+  "summary_for_underwriter": "Prime borrower. Equifax holds one additional historical tradeline (Capital One, closed in good standing) that slightly drags the score on the FICO 5 model. Functionally identical risk profile to Experian's read."
+}

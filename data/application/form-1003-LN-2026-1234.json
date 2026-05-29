@@ -1,0 +1,142 @@
+{
+  "_meta": {
+    "form": "Form 1003 — Uniform Residential Loan Application (Fannie Mae 1003 / Freddie Mac 65)",
+    "purpose": "Foundational borrower application capturing identity, employment, income, assets, debts, property, and loan terms. EVERY US residential mortgage starts here.",
+    "loan_id": "LN-2026-1234",
+    "lender": "DobbyBank, N.A.",
+    "loan_officer": "Sandra Chen (NMLS #1234567)",
+    "application_date": "2026-05-15",
+    "channel": "Retail — branch (Castro Valley)"
+  },
+
+  "section_1_loan_purpose": {
+    "loan_purpose": "Purchase",
+    "loan_type": "Conventional",
+    "amortization_type": "Fixed Rate",
+    "occupancy": "Primary Residence",
+    "loan_amount_usd": 750000,
+    "interest_rate_pct": 6.75,
+    "term_months": 360,
+    "monthly_principal_interest_usd": 4862.34
+  },
+
+  "section_2_borrower": {
+    "full_legal_name": "Maria Lucia Rodriguez",
+    "ssn": "XXX-XX-1234",
+    "dob": "1985-07-22",
+    "marital_status": "Single",
+    "dependents": 0,
+    "us_citizen": true,
+    "phone": "(510) 555-0142",
+    "email": "maria.rodriguez@example.com",
+    "current_address": {
+      "street": "2150 Stanton Ave, Apt 12",
+      "city": "Castro Valley",
+      "state": "CA",
+      "zip": "94546",
+      "years_at_address": 4,
+      "housing_status": "Rent",
+      "monthly_payment_usd": 2800
+    },
+    "prior_addresses": [
+      {
+        "street": "847 Foothill Blvd",
+        "city": "Hayward",
+        "state": "CA",
+        "zip": "94542",
+        "from": "2017-03",
+        "to": "2022-06"
+      }
+    ]
+  },
+
+  "section_3_employment_income": {
+    "primary_employer": {
+      "name": "Quantum Logistics Corp",
+      "address": "1500 Hacienda Dr, Pleasanton, CA 94588",
+      "phone": "(925) 555-0188",
+      "position": "Senior Software Engineer",
+      "start_date": "2018-04-01",
+      "years_in_role": 8,
+      "annual_gross_usd": 250000,
+      "monthly_gross_usd": 20833.33,
+      "self_employed": false
+    },
+    "other_income": [
+      {
+        "type": "RSU vesting",
+        "annual_usd": 35000,
+        "notes": "12-month rolling average; not used for qualification (per QM)"
+      }
+    ],
+    "qualifying_monthly_income_usd": 20833.33
+  },
+
+  "section_4_assets_and_liabilities": {
+    "assets": {
+      "checking_chase": 45000,
+      "savings_marcus": 125000,
+      "brokerage_fidelity": 180000,
+      "retirement_401k": 320000,
+      "earnest_money_deposit": 25000,
+      "total_liquid_usd": 350000,
+      "total_assets_usd": 695000
+    },
+    "monthly_debts": [
+      {"type": "Auto loan",         "balance_usd": 28000, "monthly_payment_usd": 712, "remaining_months": 42},
+      {"type": "Student loan",      "balance_usd": 18500, "monthly_payment_usd": 385, "remaining_months": 58},
+      {"type": "Credit card — Visa","balance_usd":  2300, "monthly_payment_usd": 125, "remaining_months": null},
+      {"type": "Credit card — Amex","balance_usd":  1850, "monthly_payment_usd":  80, "remaining_months": null}
+    ],
+    "total_monthly_debts_usd": 1302
+  },
+
+  "section_5_subject_property": {
+    "street": "3625 Crow Canyon Rd, Unit 408",
+    "city": "Castro Valley",
+    "state": "CA",
+    "zip": "94552",
+    "year_built": 2019,
+    "property_type": "Condominium",
+    "units": 1,
+    "estimated_value_usd": 950000,
+    "estimated_property_tax_annual_usd": 11400,
+    "estimated_property_tax_monthly_usd": 950,
+    "hoa_monthly_usd": 385,
+    "hazard_insurance_monthly_usd": 198,
+    "down_payment_usd": 200000,
+    "down_payment_source": "Borrower's savings + brokerage liquidation"
+  },
+
+  "section_6_declarations": {
+    "outstanding_judgments": false,
+    "bankruptcy_last_7yrs": false,
+    "foreclosure_last_7yrs": false,
+    "party_to_lawsuit": false,
+    "obligated_on_loan_in_default": false,
+    "delinquent_federal_debt": false,
+    "alimony_child_support_obligations": false,
+    "intends_to_occupy_as_primary": true
+  },
+
+  "section_7_government_monitoring": {
+    "ethnicity": "Hispanic or Latino",
+    "race": ["White"],
+    "sex": "Female",
+    "notes": "Self-reported per HMDA reporting requirements. Used ONLY for federal fair-lending monitoring; cannot influence credit decision (per ECOA Reg B)."
+  },
+
+  "derived_metrics": {
+    "ltv_pct": 78.95,
+    "front_end_dti_pct": 31.32,
+    "back_end_dti_pct": 37.57,
+    "piti_monthly_usd": 6010.34,
+    "total_housing_plus_debts_monthly_usd": 7312.34,
+    "notes": [
+      "LTV 78.95% — under 80%, no Private Mortgage Insurance (PMI) required.",
+      "Front-end DTI = PITI ÷ income = 31.32% (Fannie target ≤ 28% but flexible).",
+      "Back-end DTI = (PITI + other debts) ÷ income = 37.57% (under 43% QM threshold).",
+      "Borrower qualifies on Conventional Conforming standards."
+    ]
+  }
+}

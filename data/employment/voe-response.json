@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "form": "Verification of Employment (VOE) — written response",
+    "loan_id": "LN-2026-1234",
+    "purpose": "Lender contacts employer DIRECTLY to confirm what borrower claimed on Form 1003 — position, start date, salary, likelihood of continued employment. Two flavors: written VOE (form-based, slower, more authoritative) and verbal VOE (call HR within 10 business days of close, faster, used as 'closing protection').",
+    "voe_type": "Written"
+  },
+
+  "request": {
+    "lender": "DobbyBank, N.A.",
+    "request_date": "2026-05-16",
+    "requested_by": "Sandra Chen (Loan Officer, NMLS #1234567)",
+    "employer_contact": {
+      "company": "Quantum Logistics Corp",
+      "contact_name": "Robert Tanaka",
+      "title": "VP Human Resources",
+      "phone": "(925) 555-0188 ext 4012",
+      "email": "rtanaka@quantum-logistics.example"
+    }
+  },
+
+  "response": {
+    "response_date": "2026-05-18",
+    "completed_by": "Robert Tanaka, VP HR",
+    "applicant_name": "Maria L. Rodriguez",
+    "ssn_last4": "1234",
+
+    "current_position": "Senior Software Engineer III",
+    "department": "Platform Infrastructure",
+    "employment_start_date": "2018-04-01",
+    "years_with_company": 8.1,
+
+    "employment_type": "Regular full-time, salaried, exempt",
+    "probationary_period_complete": true,
+
+    "base_pay": {
+      "annual_base_salary": 245000,
+      "pay_frequency": "Semi-monthly (24 pay periods)",
+      "monthly_gross": 20416.67
+    },
+
+    "additional_compensation_24mo": {
+      "year_2024_bonus": 22000,
+      "year_2024_overtime": 0,
+      "year_2025_bonus": 24500,
+      "year_2025_overtime": 0,
+      "rsu_vesting_annual_estimate": 35000
+    },
+
+    "likelihood_of_continued_employment": "High",
+    "notice_of_termination_received": false,
+    "performance_review_status": "Above Expectations (last 3 cycles)",
+
+    "remarks": "Maria has been a consistent high performer. No disciplinary actions in her file. She is currently leading our cloud-cost-optimization initiative. We have no reason to believe employment will not continue indefinitely."
+  },
+
+  "verbal_voe_closing_check": {
+    "scheduled_date": "2026-06-12",
+    "purpose": "Final verbal confirmation within 10 business days of closing (per Fannie Mae B3-3.1-07). Phone call to HR confirms 'is Maria still employed as of today?' — protects against borrower being terminated between application and closing."
+  }
+}

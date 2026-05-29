@@ -1,0 +1,94 @@
+{
+  "_meta": {
+    "bureau": "Experian",
+    "loan_id": "LN-2026-1234",
+    "pull_date": "2026-05-15T14:22:08-07:00",
+    "pull_type": "Hard inquiry — mortgage",
+    "scoring_model": "FICO Score 8 (mortgage variant)",
+    "pulled_by": "DobbyBank, N.A. — NMLS #1234567",
+    "purpose": "Credit risk assessment — the lender pulls from all THREE bureaus because each bureau may hold different tradelines and report different scores; the tri-merge analysis (next stage) reconciles."
+  },
+
+  "borrower": {
+    "name": "Maria Lucia Rodriguez",
+    "ssn_last4": "1234",
+    "dob": "1985-07-22",
+    "current_address": "2150 Stanton Ave Apt 12, Castro Valley CA 94546"
+  },
+
+  "fico_score": 740,
+  "fico_range": "Very Good (740-799)",
+
+  "score_factors": [
+    "Length of credit history: 14 years (positive)",
+    "Credit utilization: 11% (positive — below 30%)",
+    "Recent inquiries: 2 in last 6 months (slight negative)",
+    "No derogatory marks in last 24 months (positive)"
+  ],
+
+  "tradelines": [
+    {
+      "creditor": "Toyota Financial Services",
+      "type": "Auto loan (installment)",
+      "opened": "2022-09-15",
+      "high_credit": 38000,
+      "balance": 28000,
+      "monthly_payment": 712,
+      "status": "Current",
+      "payment_history_24mo": "OOOOOOOOOOOOOOOOOOOOOOOO"
+    },
+    {
+      "creditor": "Navient (Dept of Education servicer)",
+      "type": "Student loan (installment)",
+      "opened": "2007-09-01",
+      "high_credit": 52000,
+      "balance": 18500,
+      "monthly_payment": 385,
+      "status": "Current",
+      "payment_history_24mo": "OOOOOOOOOOOOOOOOOOOOOOOO"
+    },
+    {
+      "creditor": "Chase Sapphire Visa",
+      "type": "Revolving (credit card)",
+      "opened": "2014-11-03",
+      "credit_limit": 22000,
+      "balance": 2300,
+      "utilization_pct": 10.5,
+      "status": "Current",
+      "payment_history_24mo": "OOOOOOOOOOOOOOOOOOOOOOOO"
+    },
+    {
+      "creditor": "American Express Gold",
+      "type": "Charge card",
+      "opened": "2019-05-12",
+      "balance": 1850,
+      "status": "Current — paid in full each cycle",
+      "payment_history_24mo": "OOOOOOOOOOOOOOOOOOOOOOOO"
+    },
+    {
+      "creditor": "Discover It",
+      "type": "Revolving (credit card)",
+      "opened": "2012-03-20",
+      "credit_limit": 15000,
+      "balance": 0,
+      "utilization_pct": 0,
+      "status": "Current — inactive",
+      "payment_history_24mo": "OOOOOOOOOOOOOOOOOOOOOOOO"
+    }
+  ],
+
+  "public_records": [],
+  "collections": [],
+  "bankruptcies": [],
+
+  "recent_inquiries": [
+    {"creditor": "DobbyBank, N.A.", "date": "2026-05-15", "type": "Mortgage"},
+    {"creditor": "Apple Card", "date": "2025-11-08", "type": "Revolving"}
+  ],
+
+  "total_revolving_credit_limit": 37000,
+  "total_revolving_balance": 4150,
+  "aggregate_utilization_pct": 11.2,
+
+  "summary_for_underwriter": "Prime borrower. No derogatory marks in tracking window. Utilization well below 30% threshold. Stable installment payment history on auto + student loan. Credit history depth (14 years) supports approval."
+}

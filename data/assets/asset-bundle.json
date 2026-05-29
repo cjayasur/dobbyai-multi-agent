@@ -1,0 +1,99 @@
+{
+  "_meta": {
+    "bundle": "Asset Verification — bank statements + brokerage + retirement",
+    "loan_id": "LN-2026-1234",
+    "purpose": "Lender must verify the borrower has (a) enough liquid reserves for down payment + closing costs + 2-6 months PITI cushion, and (b) the funds are seasoned (60+ days in account) and traceable (no undocumented large deposits = anti-money-laundering hygiene)."
+  },
+
+  "chase_checking_4521": {
+    "account_type": "Personal Checking",
+    "institution": "JPMorgan Chase Bank, N.A.",
+    "account_last4": "4521",
+    "statement_periods": [
+      {
+        "period": "2026-02-01 to 2026-02-28",
+        "beginning_balance": 41200,
+        "ending_balance": 43800,
+        "deposits_total": 12450,
+        "withdrawals_total": 9850,
+        "large_deposits_over_1000": [
+          {"date": "2026-02-15", "amount": 6450.00, "source": "Quantum Logistics Corp PAYROLL"},
+          {"date": "2026-02-28", "amount": 6450.00, "source": "Quantum Logistics Corp PAYROLL"}
+        ]
+      },
+      {
+        "period": "2026-03-01 to 2026-03-31",
+        "beginning_balance": 43800,
+        "ending_balance": 44600,
+        "large_deposits_over_1000": [
+          {"date": "2026-03-15", "amount": 6450.00, "source": "Quantum Logistics Corp PAYROLL"},
+          {"date": "2026-03-31", "amount": 6450.00, "source": "Quantum Logistics Corp PAYROLL"}
+        ]
+      },
+      {
+        "period": "2026-04-01 to 2026-04-30",
+        "beginning_balance": 44600,
+        "ending_balance": 45000,
+        "large_deposits_over_1000": [
+          {"date": "2026-04-15", "amount": 6450.00, "source": "Quantum Logistics Corp PAYROLL"},
+          {"date": "2026-04-30", "amount": 6450.00, "source": "Quantum Logistics Corp PAYROLL"}
+        ]
+      }
+    ],
+    "undocumented_large_deposits": [],
+    "notes": "All deposits are payroll. No flagged transactions for AML/BSA review."
+  },
+
+  "marcus_savings_8910": {
+    "account_type": "High-yield savings",
+    "institution": "Marcus by Goldman Sachs",
+    "account_last4": "8910",
+    "current_balance": 125000,
+    "average_3mo_balance": 124200,
+    "interest_rate_apy": 4.25,
+    "seasoned": true,
+    "notes": "Stable balance — borrower drips small amounts in. Acceptable for down payment + reserves."
+  },
+
+  "fidelity_brokerage_2245": {
+    "account_type": "Individual taxable brokerage",
+    "institution": "Fidelity Investments",
+    "account_last4": "2245",
+    "current_value": 180000,
+    "vested_value_for_lending": 162000,
+    "lending_adjustment_pct": 90,
+    "notes": "Per Fannie Mae B3-4.3-01: stocks/bonds counted at 70-100% depending on volatility. Here 90% applied to broad-index ETFs (VTI, VOO, BND). Available for down payment if liquidated; lender requires liquidation evidence before close."
+  },
+
+  "fidelity_401k_5570": {
+    "account_type": "Employer 401(k)",
+    "institution": "Fidelity Workplace",
+    "account_last4": "5570",
+    "current_balance": 320000,
+    "vested_balance": 320000,
+    "lending_adjustment_pct": 60,
+    "value_for_lending": 192000,
+    "notes": "Per Fannie Mae B3-4.3-03: retirement assets counted at 60% (accounts for taxes + 10% early-withdrawal penalty). NOT being used for down payment here — kept as reserves cushion."
+  },
+
+  "earnest_money_deposit": {
+    "amount": 25000,
+    "deposited_with": "Bay Area Escrow Co (file #BAE-2026-3412)",
+    "date_deposited": "2026-05-08",
+    "source_of_funds": "Wire from Chase Checking 4521",
+    "wire_reference": "OUT-2026-05-08-CHK4521-EM",
+    "notes": "Standard 2-3% earnest money to demonstrate good-faith intent. Already part of borrower's $200K down payment."
+  },
+
+  "summary": {
+    "total_liquid_assets": 350000,
+    "lending_adjusted_total": 514000,
+    "down_payment_required": 200000,
+    "estimated_closing_costs": 19000,
+    "reserves_required_per_fannie": 12020.68,
+    "reserves_required_months": 2,
+    "reserves_remaining_after_close": 295000,
+    "reserves_remaining_months": 49,
+    "verdict": "Far in excess of required minimums."
+  }
+}

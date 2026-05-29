@@ -1,0 +1,46 @@
+{
+  "name": "dobbyai-multi-agent",
+  "version": "0.1.0",
+  "description": "Framework-free multi-agent orchestration for regulated lending. 19 agents, 6 stages, one SQLite task board, one auditable underwriting decision. No LangChain. No Kafka. Just protocol-level primitives + OAuth + transactional state.",
+  "license": "MIT",
+  "author": "Charitha G Jayasuriya <charitha.jayasuriya@gmail.com>",
+  "homepage": "https://github.com/cjayasur/dobbyai-multi-agent",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cjayasur/dobbyai-multi-agent.git"
+  },
+  "keywords": [
+    "multi-agent",
+    "orchestration",
+    "mortgage",
+    "underwriting",
+    "regulated-ai",
+    "mcp",
+    "model-context-protocol",
+    "oauth",
+    "sqlite",
+    "dobbyai",
+    "vllm",
+    "qwen",
+    "anthropic-api"
+  ],
+  "type": "module",
+  "scripts": {
+    "demo": "./run-demo.sh",
+    "oauth-server": "bun run servers/oauth-server-demo.ts",
+    "tasks-server": "bun run servers/mcp-server-secure-tasks.ts",
+    "orchestrator": "bun run orchestrator/mortgage-orchestrator.ts",
+    "worker": "bun run workers/mortgage-worker.ts",
+    "worker-1": "MCP_CLIENT_ID=dobbyai-worker-001 MCP_CLIENT_SECRET=worker-001-secret-key bun run workers/mortgage-worker.ts",
+    "worker-2": "MCP_CLIENT_ID=dobbyai-worker-002 MCP_CLIENT_SECRET=worker-002-secret-key bun run workers/mortgage-worker.ts",
+    "worker-3": "MCP_CLIENT_ID=dobbyai-worker-003 MCP_CLIENT_SECRET=worker-003-secret-key bun run workers/mortgage-worker.ts",
+    "audit": "sqlite3 tasks.db 'SELECT id, task_id, actor, event, datetime(created_at) FROM task_events ORDER BY id'",
+    "clean": "rm -f tasks.db tasks.db-*"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  }
+}

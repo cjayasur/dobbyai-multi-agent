@@ -1,0 +1,163 @@
+{
+  "_meta": {
+    "bundle": "Property Documents — Appraisal (Form 1004) + Title Commitment + Hazard Insurance Declaration",
+    "loan_id": "LN-2026-1234",
+    "subject_property": "3625 Crow Canyon Rd, Unit 408, Castro Valley CA 94552",
+    "purpose": "Lender lends against the PROPERTY, not just the borrower. These three documents establish (a) the property is worth what it sells for, (b) the seller can convey clean title, (c) the property will be insured against loss."
+  },
+
+  "appraisal_form_1004": {
+    "form": "Uniform Residential Appraisal Report (Form 1004 / Freddie Mac 70)",
+    "appraiser": {
+      "name": "Daniel Esposito, MAI",
+      "license": "CA AG-038215",
+      "company": "East Bay Valuation Group",
+      "phone": "(510) 555-0277"
+    },
+    "appraisal_date": "2026-05-12",
+    "effective_date": "2026-05-12",
+    "appraised_value_usd": 950000,
+    "approach_used": "Sales comparison (primary) + Cost approach (secondary)",
+
+    "subject_property": {
+      "address": "3625 Crow Canyon Rd, Unit 408",
+      "city_state_zip": "Castro Valley, CA 94552",
+      "apn": "418-0227-008-04",
+      "property_type": "Condominium",
+      "design_style": "Mid-rise, contemporary",
+      "year_built": 2019,
+      "effective_age_years": 7,
+      "stories": "4-story building, unit on 4th floor",
+      "gross_living_area_sqft": 1485,
+      "bedrooms": 2,
+      "bathrooms_full": 2,
+      "bathrooms_half": 0,
+      "garage": "1 deeded parking + 1 storage cage",
+      "view": "Hills (east-facing balcony)",
+      "condition": "C2 — Very Good (well-maintained, recent finishes)",
+      "quality": "Q3 — Quality construction with good materials"
+    },
+
+    "comparable_sales": [
+      {
+        "address": "3625 Crow Canyon Rd Unit 302",
+        "sale_date": "2026-03-28",
+        "sale_price": 945000,
+        "sqft": 1475,
+        "price_per_sqft": 641,
+        "distance_from_subject": "Same building, lower floor",
+        "adjustment": -2000,
+        "adjusted_value": 943000,
+        "notes": "Lower floor, similar interior — minor view adjustment"
+      },
+      {
+        "address": "3650 Crow Canyon Rd Unit 506",
+        "sale_date": "2026-04-15",
+        "sale_price": 970000,
+        "sqft": 1510,
+        "price_per_sqft": 642,
+        "distance_from_subject": "0.1 mi",
+        "adjustment": -15000,
+        "adjusted_value": 955000,
+        "notes": "Slightly larger, higher floor — bracketed adjustment"
+      },
+      {
+        "address": "3600 Crow Canyon Rd Unit 211",
+        "sale_date": "2026-02-22",
+        "sale_price": 935000,
+        "sqft": 1460,
+        "price_per_sqft": 640,
+        "distance_from_subject": "0.05 mi",
+        "adjustment": 10000,
+        "adjusted_value": 945000,
+        "notes": "Smaller, dated kitchen — positive adjustment for subject's renovations"
+      }
+    ],
+
+    "reconciled_value": 950000,
+    "contract_price": 950000,
+    "appraisal_vs_contract_pct": 100.0,
+    "ltv_pct_at_appraised_value": 78.95,
+
+    "appraiser_certification": "I certify that the appraised value is supported by recent comparable sales and reasonable market analysis. Property is in acceptable condition for lending.",
+
+    "lender_review": {
+      "review_appraiser": "Internal QC — DobbyBank Appraisal Review Desk",
+      "review_date": "2026-05-14",
+      "review_outcome": "Approved with no conditions",
+      "uad_compliance": "Pass",
+      "uspap_compliance": "Pass"
+    }
+  },
+
+  "title_commitment": {
+    "form": "Title Commitment (ALTA Commitment for Title Insurance)",
+    "title_company": "Old Republic National Title Insurance Co",
+    "title_officer": "Lauren Park",
+    "commitment_number": "OR-2026-CC-114788",
+    "issue_date": "2026-05-13",
+    "effective_date": "2026-05-12",
+
+    "vested_owner": {
+      "current_owner": "Patel Family Trust dated 2017-08-30",
+      "trustees": ["Anil Patel", "Priya Patel"]
+    },
+
+    "proposed_insured": "Maria Lucia Rodriguez, an unmarried woman",
+    "policy_amount": 950000,
+
+    "schedule_a_requirements": [
+      "Recording of executed Grant Deed from Patel Family Trust to Maria L. Rodriguez",
+      "Recording of executed Deed of Trust securing DobbyBank loan of $750,000",
+      "Payment of 2025-2026 second-half property tax installment (currently delinquent? NO — paid)",
+      "Recording of HOA assignment / payoff of any existing liens"
+    ],
+
+    "schedule_b_exceptions": [
+      {
+        "type": "CC&Rs",
+        "description": "Master Declaration of Covenants for Crow Canyon HOA, recorded 2018-09-15, Document #2018-187432"
+      },
+      {
+        "type": "HOA Lien Authority",
+        "description": "HOA has lien rights for unpaid assessments per CC&Rs"
+      },
+      {
+        "type": "Easement",
+        "description": "PG&E utility easement along eastern property line — standard"
+      }
+    ],
+
+    "title_status": "Clear of derogatory liens. All Schedule A requirements satisfiable at close.",
+
+    "title_insurance_premium": 2850
+  },
+
+  "hazard_insurance_declaration": {
+    "form": "Evidence of Insurance — HO-6 (Condominium Unit-Owners Policy)",
+    "carrier": "State Farm Fire and Casualty",
+    "policy_number": "78-AB-2245-92",
+    "named_insured": "Maria Lucia Rodriguez",
+    "additional_insured_mortgagee": "DobbyBank, N.A. ISAOA/ATIMA",
+    "mortgagee_clause_address": "1 DobbyBank Plaza, San Francisco CA 94105",
+
+    "coverage_a_dwelling": 0,
+    "coverage_a_notes": "HO-6 policy — the HOA's master policy covers the building shell. Unit owner's policy covers improvements/betterments and personal property.",
+    "coverage_a_improvements": 75000,
+    "coverage_c_personal_property": 100000,
+    "coverage_d_loss_of_use": 30000,
+    "coverage_e_personal_liability": 300000,
+    "coverage_f_medical_payments": 5000,
+
+    "deductible_all_perils": 1000,
+    "deductible_earthquake": "Excluded — California earthquake endorsement not added (borrower election)",
+
+    "annual_premium": 425,
+    "monthly_premium_escrow": 35.42,
+    "policy_effective_date": "2026-06-15",
+    "policy_expiration_date": "2027-06-15",
+
+    "lender_required_coverage_met": true,
+    "notes": "HO-6 minimums met. Master HOA policy reviewed separately — confirmed walls-in coverage adequate for first-mortgage."
+  }
+}

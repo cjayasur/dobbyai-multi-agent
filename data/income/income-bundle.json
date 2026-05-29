@@ -1,0 +1,88 @@
+{
+  "_meta": {
+    "bundle": "Income Verification — multi-document",
+    "loan_id": "LN-2026-1234",
+    "documents": "W-2 (2024) + W-2 (2025) + most-recent pay stubs + IRS Form 4506-C transcript",
+    "purpose": "Lender must verify the income claimed on Form 1003 against (a) employer-issued W-2s, (b) most-recent paychecks, and (c) IRS transcripts (via signed 4506-C authorizing the lender to pull). Three sources = fraud-resistant. The Dodd-Frank QM rule REQUIRES documented Ability-to-Repay (ATR)."
+  },
+
+  "w2_2024": {
+    "form": "IRS Form W-2 (2024)",
+    "employer": {
+      "name": "Quantum Logistics Corp",
+      "ein": "94-3456789",
+      "address": "1500 Hacienda Dr, Pleasanton, CA 94588"
+    },
+    "employee": {
+      "name": "Maria L Rodriguez",
+      "ssn_last4": "1234",
+      "address": "2150 Stanton Ave Apt 12, Castro Valley CA 94546"
+    },
+    "box_1_wages_tips": 238500,
+    "box_2_federal_withheld": 52800,
+    "box_3_ss_wages": 168600,
+    "box_4_ss_withheld": 10453.20,
+    "box_5_medicare_wages": 245100,
+    "box_6_medicare_withheld": 3553.95,
+    "box_12_codes": [{"code": "D", "amount": 23000, "meaning": "401(k) elective deferral"}],
+    "box_14_other": [{"label": "RSU vest", "amount": 35000}]
+  },
+
+  "w2_2025": {
+    "form": "IRS Form W-2 (2025)",
+    "employer": {"name": "Quantum Logistics Corp", "ein": "94-3456789"},
+    "box_1_wages_tips": 252000,
+    "box_2_federal_withheld": 56800,
+    "box_3_ss_wages": 168600,
+    "box_4_ss_withheld": 10453.20,
+    "box_5_medicare_wages": 261000,
+    "box_6_medicare_withheld": 3784.50,
+    "box_12_codes": [{"code": "D", "amount": 23500, "meaning": "401(k) elective deferral"}]
+  },
+
+  "recent_paystubs": [
+    {
+      "pay_period": "2026-04-16 to 2026-04-30",
+      "pay_date": "2026-05-01",
+      "gross_pay": 10416.67,
+      "ytd_gross": 83333.36,
+      "ytd_federal_withheld": 18800.00,
+      "net_pay": 6450.00,
+      "deductions": {
+        "federal_tax": 2350.00,
+        "state_tax_ca": 825.00,
+        "social_security": 645.83,
+        "medicare": 151.04,
+        "401k_pretax": 1000.00
+      }
+    },
+    {
+      "pay_period": "2026-05-01 to 2026-05-15",
+      "pay_date": "2026-05-15",
+      "gross_pay": 10416.67,
+      "ytd_gross": 93750.03,
+      "net_pay": 6450.00
+    }
+  ],
+
+  "irs_form_4506c_transcript": {
+    "form": "IRS Form 4506-C — IVES Request for Transcript of Tax Return",
+    "transcript_type": "Wage and Income Transcript",
+    "tax_years_requested": [2023, 2024],
+    "status": "Returned 2026-05-17 — matches submitted W-2s within $0.00 tolerance",
+    "irs_ein_on_record": "94-3456789",
+    "irs_w2_box_1_2024": 238500,
+    "irs_w2_box_1_2023": 224800,
+    "discrepancies": "None",
+    "purpose": "This is THE definitive income verification. Borrower can't show forged W-2s if IRS transcripts confirm the same numbers. Required on every loan that goes through Desktop Underwriter."
+  },
+
+  "qualifying_income_calculation": {
+    "method": "24-month average W-2 base",
+    "2024_box_1": 238500,
+    "2025_box_1": 252000,
+    "average_annual": 245250,
+    "monthly_qualifying": 20437.50,
+    "notes": "Per Fannie Mae Selling Guide B3-3.1-01: borrower with 2+ years of consistent W-2 employment uses 24-month average. RSU income excluded — not guaranteed future."
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "_meta": {
+    "bureau": "TransUnion",
+    "loan_id": "LN-2026-1234",
+    "pull_date": "2026-05-15T14:22:14-07:00",
+    "pull_type": "Hard inquiry — mortgage",
+    "scoring_model": "FICO Score 4 (mortgage variant — TransUnion-specific)",
+    "pulled_by": "DobbyBank, N.A. — NMLS #1234567",
+    "purpose": "Third of three bureau pulls. Highest score — TransUnion's model weights long-standing installment history slightly higher."
+  },
+
+  "borrower": {
+    "name": "Maria Lucia Rodriguez",
+    "ssn_last4": "1234",
+    "dob": "1985-07-22",
+    "current_address": "2150 Stanton Ave Apt 12, Castro Valley CA 94546"
+  },
+
+  "fico_score": 745,
+  "fico_range": "Very Good (740-799)",
+
+  "score_factors": [
+    "Length of credit history: 14 years (positive — TransUnion weights this more heavily)",
+    "Mix of credit (installment + revolving): positive",
+    "No late payments in 24-month window (positive)",
+    "Credit utilization: 11% (positive)"
+  ],
+
+  "tradelines": [
+    {
+      "creditor": "Toyota Financial Services",
+      "type": "Auto loan (installment)",
+      "opened": "2022-09-15",
+      "high_credit": 38000,
+      "balance": 28000,
+      "monthly_payment": 712,
+      "status": "Current"
+    },
+    {
+      "creditor": "Navient",
+      "type": "Student loan (installment)",
+      "opened": "2007-09-01",
+      "high_credit": 52000,
+      "balance": 18500,
+      "monthly_payment": 385,
+      "status": "Current"
+    },
+    {
+      "creditor": "Chase Sapphire Visa",
+      "type": "Revolving",
+      "credit_limit": 22000,
+      "balance": 2300,
+      "status": "Current"
+    },
+    {
+      "creditor": "American Express Gold",
+      "type": "Charge card",
+      "balance": 1850,
+      "status": "Current"
+    },
+    {
+      "creditor": "Discover It",
+      "type": "Revolving",
+      "credit_limit": 15000,
+      "balance": 0,
+      "status": "Current"
+    }
+  ],
+
+  "public_records": [],
+  "collections": [],
+  "bankruptcies": [],
+
+  "recent_inquiries": [
+    {"creditor": "DobbyBank, N.A.", "date": "2026-05-15", "type": "Mortgage"},
+    {"creditor": "Apple Card", "date": "2025-11-08", "type": "Revolving"}
+  ],
+
+  "summary_for_underwriter": "Highest of the three bureau scores. Consistent payment history. No risk indicators. Tri-merge mid-score (used for qualification) will be Experian's 740."
+}
