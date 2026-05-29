@@ -7,11 +7,15 @@
 
 ## 🎬 Watch the demo
 
-> *Coming soon: 90-second walkthrough recorded with [Cap](https://cap.so) — the
-> open-source screen recorder. Will show 3 worker agents underwriting a single
-> mortgage application end-to-end against a real on-prem 120B-parameter LLM.*
->
-> Video link will appear here once recorded.
+Two-part walkthrough recorded with [Cap](https://cap.so) — the open-source screen recorder.
+
+**▶️ [Play full demo playlist (auto-advances) →](https://www.youtube.com/playlist?list=PL-gxbsWV76M1owLYkcQ0F1-mHx5dbrhus)**
+
+| Part 1 — Architecture + Worker Verifications | Part 2 — Aggregate Decision + Audit Trail |
+|:---:|:---:|
+| [![Part 1](https://img.youtube.com/vi/bKiWK-P9QZg/maxresdefault.jpg)](https://youtu.be/bKiWK-P9QZg) | [![Part 2](https://img.youtube.com/vi/FpO5YGjs1f4/maxresdefault.jpg)](https://youtu.be/FpO5YGjs1f4) |
+
+*Part 1 covers the architecture, the orchestrator's decompose step, and the 19 worker agents running parallel verifications against gpt-oss-120B on the on-prem Blackwell stack. Part 2 picks up after a transient transport hiccup and shows the orchestrator's aggregate brain moment — synthesizing the 19 verdicts into a regulator-cite-able underwriting decision.*
 
 This repo demonstrates a **production-shaped multi-agent system** for mortgage
 underwriting, built without any orchestration framework. It runs on a local
