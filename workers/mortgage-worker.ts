@@ -136,8 +136,28 @@ async function llmVerify(taskDescription: string): Promise<string> {
     headers["x-api-key"] = DOBBYAI_API_KEY;
   }
 
-  const res = await fetch(DOBBYAI_API_URL, { method: "POST", headers, body: JSON.stringify(body) });
-  if (!res.ok) throw new Error(`LLM call failed (${res.status}): ${(await res.text()).slice(0, 200)}`);
+  // Retry with exponential backoff — ngrok-fronted proxies hit transient
+  // ECONNRESET. Workers run 19+ LLM calls per demo; any single failure
+  // tanks the run, so retry is essential for reliable orchestration.
+  const MAX_ATTEMPTS = 3;
+  let res: Response | undefined;
+  let lastError: any;
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    try {
+      res = await fetch(DOBBYAI_API_URL, { method: "POST", headers, body: JSON.stringify(body) });
+      if (res.ok) break;
+      throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
+    } catch (e) {
+      lastError = e;
+      if (attempt < MAX_ATTEMPTS) {
+        const backoffSec = attempt * 3;            // 3s, 6s
+        console.log(`     ⚠ LLM attempt ${attempt}/${MAX_ATTEMPTS} failed: ${(e as Error).message}. Retrying in ${backoffSec}s...`);
+        await new Promise(r => setTimeout(r, backoffSec * 1000));
+      }
+    }
+  }
+  if (!res || !res.ok) throw new Error(`LLM call failed after ${MAX_ATTEMPTS} attempts: ${(lastError as Error)?.message ?? "unknown"}`);
+
   const j = await res.json();
   return j.content?.[0]?.text ?? j.completion ?? JSON.stringify(j);
 }

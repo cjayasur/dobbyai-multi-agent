@@ -79,7 +79,7 @@ const STAGE_TIMEOUT_MS = 5 * 60 * 1000;
 // ────────────────────────────────────────────────────────────────────
 //
 // 19 subtasks across 6 stages. Each task description points its worker at a
-// data file under data/. Workers reason over that data
+// data file under WellsFargoMortgage/data/. Workers reason over that data
 // using the DobbyAI proxy and report back a JSON verdict.
 
 type StageTask = { description: string };
@@ -89,61 +89,61 @@ const STAGES: Stage[] = [
   {
     name: "STAGE 1 — Intake / KYC",
     tasks: [
-      { description: "KYC verification. Review Form 1003 Section 2 (Borrower). Confirm identity, marital status, SSN consistency, dependents. Data: data/application/form-1003-LN-2026-1234.json. Return JSON: {verdict: 'pass'|'fail'|'review', findings: [...], risk_flags: [...]}." },
-      { description: "Driver-license + SSN consistency check. Cross-reference name + DOB across documents. Data: data/application/form-1003-LN-2026-1234.json. Return JSON verdict." },
+      { description: "KYC verification. Review Form 1003 Section 2 (Borrower). Confirm identity, marital status, SSN consistency, dependents. Data: WellsFargoMortgage/data/application/form-1003-LN-2026-1234.json. Return JSON: {verdict: 'pass'|'fail'|'review', findings: [...], risk_flags: [...]}." },
+      { description: "Driver-license + SSN consistency check. Cross-reference name + DOB across documents. Data: WellsFargoMortgage/data/application/form-1003-LN-2026-1234.json. Return JSON verdict." },
       { description: "OFAC / SDN sanctions screen. Borrower name + DOB against Treasury Specially Designated Nationals list. Reference 31 CFR 501. Return JSON: {match: bool, list_version: str, verdict: 'pass'|'block'}." },
-      { description: "Address history verification — confirm 24+ months of residency per Reg X. Cross-check current + prior address consistency. Data: data/application/form-1003-LN-2026-1234.json." },
+      { description: "Address history verification — confirm 24+ months of residency per Reg X. Cross-check current + prior address consistency. Data: WellsFargoMortgage/data/application/form-1003-LN-2026-1234.json." },
     ],
   },
 
   {
     name: "STAGE 2a — Credit Bureau Pulls (parallel)",
     tasks: [
-      { description: "Credit bureau pull — Experian (FICO Score 8). Extract FICO + tradeline summary + flag any derogatories. Data: data/credit/experian-pull.json. Return JSON: {bureau, fico, derogatories: [], tradelines_count}." },
-      { description: "Credit bureau pull — Equifax (FICO Score 5). Extract FICO + tradelines. Data: data/credit/equifax-pull.json. Return JSON." },
-      { description: "Credit bureau pull — TransUnion (FICO Score 4). Extract FICO + tradelines. Data: data/credit/transunion-pull.json. Return JSON." },
+      { description: "Credit bureau pull — Experian (FICO Score 8). Extract FICO + tradeline summary + flag any derogatories. Data: WellsFargoMortgage/data/credit/experian-pull.json. Return JSON: {bureau, fico, derogatories: [], tradelines_count}." },
+      { description: "Credit bureau pull — Equifax (FICO Score 5). Extract FICO + tradelines. Data: WellsFargoMortgage/data/credit/equifax-pull.json. Return JSON." },
+      { description: "Credit bureau pull — TransUnion (FICO Score 4). Extract FICO + tradelines. Data: WellsFargoMortgage/data/credit/transunion-pull.json. Return JSON." },
     ],
   },
 
   {
     name: "STAGE 2b — Tri-merge Credit Analysis",
     tasks: [
-      { description: "Tri-merge credit analysis. Reconcile FICO scores across Experian (FICO 8), Equifax (FICO 5), TransUnion (FICO 4). Apply Fannie Mae convention: use MID-SCORE (middle of three) as qualifying FICO. Identify any tradelines reported by some bureaus but not others. Data: data/credit/{experian,equifax,transunion}-pull.json. Return JSON: {mid_score, lowest, highest, variance_explained: str, qualifying_tier: str (per DobbyBank guideline §2)}." },
+      { description: "Tri-merge credit analysis. Reconcile FICO scores across Experian (FICO 8), Equifax (FICO 5), TransUnion (FICO 4). Apply Fannie Mae convention: use MID-SCORE (middle of three) as qualifying FICO. Identify any tradelines reported by some bureaus but not others. Data: WellsFargoMortgage/data/credit/{experian,equifax,transunion}-pull.json. Return JSON: {mid_score, lowest, highest, variance_explained: str, qualifying_tier: str (per DobbyBank guideline §2)}." },
     ],
   },
 
   {
     name: "STAGE 3 — Financial Verification (parallel)",
     tasks: [
-      { description: "Income verification. Reconcile W-2s (2024 + 2025), recent paystubs, and IRS Form 4506-C transcript. Compute 24-month qualifying income per Fannie Mae Selling Guide B3-3.1-01. Data: data/income/income-bundle.json. Return JSON: {qualifying_monthly_income, method, irs_match: bool, verdict}." },
-      { description: "Asset verification. Review bank statements + brokerage + retirement accounts. Confirm down payment + 2-mo PITI reserves available. Flag any undocumented large deposits (AML/BSA hygiene). Data: data/assets/asset-bundle.json. Return JSON: {liquid_total, lending_adjusted_total, undocumented_deposits: [], verdict}." },
-      { description: "Employment verification (VOE). Confirm position, start date, salary continuity, no termination notice. Data: data/employment/voe-response.json. Return JSON: {position, years, salary_confirmed, continuation_likelihood, verdict}." },
-      { description: "Debt-to-income (DTI) calculation. Compute front-end DTI (PITI / income) and back-end DTI ((PITI + recurring debts) / income). Cross-reference DobbyBank guidelines §4 for thresholds. Data: data/application/form-1003-LN-2026-1234.json. Return JSON: {front_end_dti, back_end_dti, qm_safe_harbor: bool, verdict}." },
+      { description: "Income verification. Reconcile W-2s (2024 + 2025), recent paystubs, and IRS Form 4506-C transcript. Compute 24-month qualifying income per Fannie Mae Selling Guide B3-3.1-01. Data: WellsFargoMortgage/data/income/income-bundle.json. Return JSON: {qualifying_monthly_income, method, irs_match: bool, verdict}." },
+      { description: "Asset verification. Review bank statements + brokerage + retirement accounts. Confirm down payment + 2-mo PITI reserves available. Flag any undocumented large deposits (AML/BSA hygiene). Data: WellsFargoMortgage/data/assets/asset-bundle.json. Return JSON: {liquid_total, lending_adjusted_total, undocumented_deposits: [], verdict}." },
+      { description: "Employment verification (VOE). Confirm position, start date, salary continuity, no termination notice. Data: WellsFargoMortgage/data/employment/voe-response.json. Return JSON: {position, years, salary_confirmed, continuation_likelihood, verdict}." },
+      { description: "Debt-to-income (DTI) calculation. Compute front-end DTI (PITI / income) and back-end DTI ((PITI + recurring debts) / income). Cross-reference DobbyBank guidelines §4 for thresholds. Data: WellsFargoMortgage/data/application/form-1003-LN-2026-1234.json. Return JSON: {front_end_dti, back_end_dti, qm_safe_harbor: bool, verdict}." },
     ],
   },
 
   {
     name: "STAGE 4 — Property (parallel)",
     tasks: [
-      { description: "Appraisal review (Form 1004 URAR). Verify appraised value supports contract price. Check comp quality (3 closed, within 12 mo, within 1 mi). Cross-check UAD compliance. Data: data/property/property-bundle.json. Return JSON: {appraised_value, contract_price, ltv_at_appraised, comps_acceptable: bool, verdict}." },
-      { description: "Title commitment review. Confirm title vests in seller, identify Schedule B exceptions (CC&Rs, easements). Verify no derogatory liens. Confirm title insurance policy amount = loan amount. Data: data/property/property-bundle.json. Return JSON: {clear_title: bool, exceptions: [], policy_amount, verdict}." },
-      { description: "Hazard insurance verification. Confirm HO-6 policy effective at close, lender named as mortgagee, coverage meets DobbyBank minimums. Data: data/property/property-bundle.json. Return JSON: {carrier, coverage_adequate: bool, mortgagee_listed: bool, verdict}." },
+      { description: "Appraisal review (Form 1004 URAR). Verify appraised value supports contract price. Check comp quality (3 closed, within 12 mo, within 1 mi). Cross-check UAD compliance. Data: WellsFargoMortgage/data/property/property-bundle.json. Return JSON: {appraised_value, contract_price, ltv_at_appraised, comps_acceptable: bool, verdict}." },
+      { description: "Title commitment review. Confirm title vests in seller, identify Schedule B exceptions (CC&Rs, easements). Verify no derogatory liens. Confirm title insurance policy amount = loan amount. Data: WellsFargoMortgage/data/property/property-bundle.json. Return JSON: {clear_title: bool, exceptions: [], policy_amount, verdict}." },
+      { description: "Hazard insurance verification. Confirm HO-6 policy effective at close, lender named as mortgagee, coverage meets DobbyBank minimums. Data: WellsFargoMortgage/data/property/property-bundle.json. Return JSON: {carrier, coverage_adequate: bool, mortgagee_listed: bool, verdict}." },
     ],
   },
 
   {
     name: "STAGE 5 — Underwriting Decision",
     tasks: [
-      { description: "Underwriter decision. Synthesize ALL prior stage findings. Apply DobbyBank Underwriting Guidelines: §2 (credit), §3 (LTV), §4 (DTI), §5 (reserves). Approve / approve-with-conditions / decline. Data: read all stage 1-4 verdicts from task_events log + data/policy/dobbybank-underwriting-guidelines.md. Return JSON: {decision: 'approve'|'approve_with_conditions'|'decline', conditions: [], compensating_factors: [], reasoning: str}." },
+      { description: "Underwriter decision. Synthesize ALL prior stage findings. Apply DobbyBank Underwriting Guidelines: §2 (credit), §3 (LTV), §4 (DTI), §5 (reserves). Approve / approve-with-conditions / decline. Data: read all stage 1-4 verdicts from task_events log + WellsFargoMortgage/data/policy/dobbybank-underwriting-guidelines.md. Return JSON: {decision: 'approve'|'approve_with_conditions'|'decline', conditions: [], compensating_factors: [], reasoning: str}." },
     ],
   },
 
   {
     name: "STAGE 6 — Compliance (sequential)",
     tasks: [
-      { description: "TRID compliance check. Verify Loan Estimate delivered ≤ 3 business days of application, fee tolerances respected. Reference checklist T1-T7. Data: data/policy/compliance-checklist.md. Return JSON: {checks_passed: [], checks_failed: [], verdict}." },
-      { description: "HMDA data preparation. Confirm Section 7 government-monitoring fields collected. Validate denial-reason coding (if applicable). Reference checklist H1-H5. Data: data/policy/compliance-checklist.md. Return JSON." },
-      { description: "ECOA + QM/ATR compliance. Verify no prohibited basis used in decision. Verify DTI ≤ 43% (QM safe harbor) or compensating factors documented. Reference checklist E1-E4 + Q1-Q7. Data: data/policy/compliance-checklist.md. Return JSON." },
+      { description: "TRID compliance check. Verify Loan Estimate delivered ≤ 3 business days of application, fee tolerances respected. Reference checklist T1-T7. Data: WellsFargoMortgage/data/policy/compliance-checklist.md. Return JSON: {checks_passed: [], checks_failed: [], verdict}." },
+      { description: "HMDA data preparation. Confirm Section 7 government-monitoring fields collected. Validate denial-reason coding (if applicable). Reference checklist H1-H5. Data: WellsFargoMortgage/data/policy/compliance-checklist.md. Return JSON." },
+      { description: "ECOA + QM/ATR compliance. Verify no prohibited basis used in decision. Verify DTI ≤ 43% (QM safe harbor) or compensating factors documented. Reference checklist E1-E4 + Q1-Q7. Data: WellsFargoMortgage/data/policy/compliance-checklist.md. Return JSON." },
     ],
   },
 ];
@@ -326,8 +326,29 @@ Produce a final decision in this exact structure:
     headers["x-api-key"] = DOBBYAI_API_KEY;
   }
 
-  const res = await fetch(DOBBYAI_API_URL, { method: "POST", headers, body: JSON.stringify(body) });
-  if (!res.ok) throw new Error(`Aggregate LLM call failed (${res.status}): ${await res.text()}`);
+  // Retry with exponential backoff. ngrok-fronted proxies can hit transient
+  // ECONNRESET on long-context calls — production-grade response is retry,
+  // not crash. Aggregate is ONE call so the latency cost of retry is acceptable.
+  const MAX_ATTEMPTS = 3;
+  let res: Response | undefined;
+  let lastError: any;
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    try {
+      res = await fetch(DOBBYAI_API_URL, { method: "POST", headers, body: JSON.stringify(body) });
+      if (res.ok) break;
+      throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
+    } catch (e) {
+      lastError = e;
+      if (attempt < MAX_ATTEMPTS) {
+        const backoffSec = attempt * 5;            // 5s, 10s
+        console.log(`   ⚠ Aggregate LLM call attempt ${attempt}/${MAX_ATTEMPTS} failed: ${(e as Error).message}`);
+        console.log(`   ↻ Retrying in ${backoffSec}s...`);
+        await new Promise(r => setTimeout(r, backoffSec * 1000));
+      }
+    }
+  }
+  if (!res || !res.ok) throw new Error(`Aggregate LLM call failed after ${MAX_ATTEMPTS} attempts: ${(lastError as Error)?.message ?? "unknown"}`);
+
   const j = await res.json();
   const text = j.content?.[0]?.text ?? j.completion ?? JSON.stringify(j);
   return text;
